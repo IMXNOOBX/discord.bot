@@ -1,0 +1,15 @@
+{
+    "def_prefix": "",
+    "dev": {
+        "owner_id": ""
+    },
+    "utils": {
+        "log_channel_id": "",
+        "invite": "%20applications.commands",
+        "log_webhook": "",
+        "raw_scamlink_url": ""
+    }
+    "antiRaid": {
+        "tresshold": 30000
+    }
+}

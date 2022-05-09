@@ -1,0 +1,34 @@
+{
+  "name": "djs-base",
+  "description": "",
+  "version": "1.2.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "first": "npm i && node index.js",
+    "start": "node index.js",
+    "debug": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IMXNOOBX/djs.base.git"
+  },
+  "keywords": [
+    "discord-bot",
+    "bot",
+    "discord"
+  ],
+  "author": "IMXNOOBX",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IMXNOOBX/djs.base/issues"
+  },
+  "homepage": "https://github.com/IMXNOOBX/djs.base#readme",
+  "dependencies": {
+    "dis-logs": "^1.2.6",
+    "discord.js": "^13.6.0",
+    "dotenv": "^10.0.0",
+    "ms": "^2.1.3",
+    "quick.db": "^7.1.3"
+  }
+}

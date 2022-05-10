@@ -24,7 +24,7 @@
   - Clean Code
 
 [UTILS]
-  - Slahs Command Support
+  - Slash Command Support
   - Chat Command Support
   - Simple Command Example (ping)
   - Advance Command Example (eval)

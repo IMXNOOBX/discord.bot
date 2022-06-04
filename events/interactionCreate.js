@@ -20,7 +20,7 @@ module.exports.run = async (client, interaction) => {
         try {
             command.run(client, interaction, args)
         } catch (e) {
-            interaction.followUp({ content: `${client.emotes.bug} - Error: something weird happened, the error has been reported!`, ephemeral: true });
+            interaction.followUp({ content: `Error: something weird happened, the error has been reported!`, ephemeral: true });
             client.log.error(e)
         }
 

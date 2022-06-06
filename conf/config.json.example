@@ -4,9 +4,7 @@
         "owner_id": ""
     },
     "utils": {
-        "log_channel_id": "",
         "invite": "<invite_url>%20applications.commands",
-        "log_webhook": "",
-        "raw_scamlink_url": ""
+        "log_webhook": ""
     }
 }

@@ -1,6 +1,6 @@
 <h1 align="center">Discord Bot Base</h1>
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-1.2.0-blue.svg?cacheSeconds=2592000" />
+  <img alt="Version" src="https://img.shields.io/badge/version-1.2.4-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/IMXNOOBX/snooby#readme" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
   </a>
@@ -12,13 +12,13 @@
   </a>
 </p>
 
-> This is my main discord bot base. It works fine and should work for your amazing bots
+> This is my main discord bot base. Its a great template to start coding your awesome bots!!
 
 ## 🥏 Features
 
 ```js
 [MAIN]
-  - Discord JS V13 Support
+  - Discord.js V14 Support
   - Global Variables
   - Secure Token Using Dotenv
   - Clean Code

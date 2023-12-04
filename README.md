@@ -17,21 +17,21 @@
 ## 🥏 Features
 
 ```js
-[MAIN]
-  - Discord.js V14 Support
-  - Global Variables
-  - Secure Token Using Dotenv
-  - Clean Code
+[main]
+  - Discord.js v14 support
+  - Global variables
+  - Secure token using dotenv
+  - Clean code
 
-[UTILS]
-  - Slash Command Support
-  - Chat Command Support
-  - Simple Command Example (ping)
-  - Advance Command Example (eval)
+[utilities]
+  - Slash command support
+  - Chat command support
+  - Simple command example (ping)
+  - Advance command example (eval)
 
-[ERRORS]
-  - Error Handling
-  - Discord Logging (throght webhook)
+[error]
+  - Error handling
+  - Discord logging (using dis-logs)
 ```
 
 ## 💈 Install
@@ -69,7 +69,19 @@ Contributions, issues and feature requests are welcome!<br />Feel free to check 
 
 Give a ⭐️ if this project helped you!
 
-## 📝 License
+# 🔖 License & Copyright
 
-Copyright © 2021 [IMXNOOBX](https://github.com/IMXNOOBX).<br />
-This project is [ISC](https://github.com/IMXNOOBX/djs.base/blob/master/LICENSE) licensed.
+This project is licensed under [**CC BY-NC 4.0**](https://creativecommons.org/licenses/by-nc/4.0/).
+```diff
++ You are free to:
+	• Share: Copy and redistribute the material in any medium or format.
+	• Adapt: Remix, transform, and build upon the material.
++ Under the following terms:
+	• Attribution: You must give appropriate credit, provide a link to original the source repository, and indicate if changes were made.
+	• Non-Commercial: You may not use the material for commercial purposes.
+- You are not allowed to:
+	• Sell: This license forbids selling original or modified material for commercial purposes.
+	• Sublicense: This license forbids sublicensing original or modified material.
+```
+### ©️ Copyright
+The content of this project is ©️ by [IMXNOOBX](https://github.com/IMXNOOBX) and the respective contributors. See the [LICENSE.md](LICENSE.md) file for details.

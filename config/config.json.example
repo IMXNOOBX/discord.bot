@@ -1,8 +1,6 @@
 {
-    "def_prefix": "",
-    "dev": {
-        "owner_id": ""
-    },
+    "prefix": "!",
+    "owner": "",
     "utils": {
         "invite": "<invite_url>%20applications.commands",
         "log_webhook": ""

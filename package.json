@@ -1,17 +1,17 @@
 {
-  "name": "djs-base",
-  "description": "Discord.js v14 bot template/base",
-  "version": "1.2.4",
+  "name": "discord.bot",
+  "description": "discord.js v14 bot template/base code",
+  "version": "1.3.0",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "first": "npm i && node index.js",
     "start": "node index.js",
-    "debug": "nodemon index.js"
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/IMXNOOBX/djs.base.git"
+    "url": "git+https://github.com/IMXNOOBX/discord.bot.git"
   },
   "keywords": [
     "discord-bot",
@@ -19,16 +19,18 @@
     "discord"
   ],
   "author": "IMXNOOBX",
-  "license": "ISC",
+  "license": "CC-BY-NC-4.0",
   "bugs": {
-    "url": "https://github.com/IMXNOOBX/djs.base/issues"
+    "url": "https://github.com/IMXNOOBX/discord.bot/issues"
   },
-  "homepage": "https://github.com/IMXNOOBX/djs.base#readme",
+  "homepage": "https://github.com/IMXNOOBX/discord.bot#readme",
   "dependencies": {
-    "dis-logs": "^1.2.8",
-    "discord.js": "^14.6.0",
-    "dotenv": "^16.0.3",
-    "ms": "^2.1.3",
-    "quick.db": "^9.0.6"
+    "dis-logs": "^1.3.4",
+    "discord.js": "^14.14.1",
+    "dotenv": "^16.4.5",
+    "ms": "^2.1.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
   }
 }

@@ -2,7 +2,7 @@ module.exports.run = async (client, interaction) => {
     if (interaction.isCommand()) { // First check if the interaction is a command registered in hSlash.js
         await interaction.deferReply({ ephemeral: false }).catch(() => { }); // if ephemeral: true all the slash commands will be answered as ephemeral and only the executor user will be able to see them
 
-        if (interaction.guildId == null) return; //yep
+        if (interaction.guildId == null) return; // Filter out DMs and other non-guild interactions
 
         const command = client.commands.slash.get(interaction.commandName);
         if (!command) return;

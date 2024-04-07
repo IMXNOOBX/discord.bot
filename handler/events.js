@@ -1,8 +1,9 @@
 const { readdirSync } = require('fs')
 
 module.exports = (client, log) => {
-
-    const events = readdirSync('./events/').filter(file => file.endsWith('.js'));
+    const events = readdirSync('./events/')
+        .filter(file => file.endsWith('.js') || file.endsWith('.ts'));
+        
     for (let file of events) {
 
         try {
@@ -18,5 +19,5 @@ module.exports = (client, log) => {
             client.log.error('[BOT] | Error While loading: ' + file + '\nDiscord Response: ' + err);
         }
     }
-    client.log.console('[BOT] | Events Loaded Sucessfully!');
+    client.log.console('[BOT] | Event listeners loaded sucessfully!');
 }

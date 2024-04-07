@@ -6,9 +6,9 @@ const auth = require('dotenv').config()
 const client = new Discord.Client({
     intents: [
         Discord.GatewayIntentBits.Guilds,
+        Discord.GatewayIntentBits.GuildMessages,
+        Discord.GatewayIntentBits.MessageContent,
         Discord.GatewayIntentBits.GuildMembers,
-        Discord.GatewayIntentBits.GuildMessages,
-        Discord.GatewayIntentBits.GuildMessages,
         Discord.GatewayIntentBits.GuildWebhooks,
         Discord.GatewayIntentBits.DirectMessages
     ],
@@ -20,10 +20,9 @@ const client = new Discord.Client({
 
 
 
-client.db = require('quick.db'); // Doing this, we will enable quick.db globaly: client.db.get(`info`) 
 client.ms = require('ms');
-client.config = require('./conf/config.json'); // Same with all of these
-client.log = new Webhook(client.config.utils.log_webhook);
+client.config = require('./config/config.json'); // Same with all of these
+client.log = new Webhook(process.env.LOG_WEBHOOK);
 
 client.discord = Discord;
 client.commands = new Discord.Collection();
@@ -35,12 +34,17 @@ client.commands.menus = new Discord.Collection();
 client.commands.slash = new Discord.Collection();
 
 
-// Creating Command Handler Handler
-var hands = ['hCommands', 'hEvents', 'hSlash'];
-hands.forEach(handler => {
-    require(`./handler/${handler}`)(client);
-});
+// Load all handlers
+const handlers = fs.readdirSync(`./handler`)
+    .filter(file => file.endsWith('.js') || file.endsWith('.ts'));
 
-client.login(process.env.BOT_TOKEN).catch(err => {
-    client.log.error('[BOT] | Login Error. Discord Response: ' + err);
-});
+handlers
+    .forEach(handler => {
+        require(`./handler/${handler}`)(client);
+    });
+
+client
+    .login(process.env.BOT_TOKEN)
+    .catch(err => {
+        client.log.error('[BOT] | Login Error. Discord Response: ' + err);
+    });

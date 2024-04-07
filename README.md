@@ -1,4 +1,4 @@
-<h1 align="center">Discord Bot Base</h1>
+<h1 align="center">noob's djs template</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.2.4-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/IMXNOOBX/snooby#readme" target="_blank">
@@ -12,26 +12,28 @@
   </a>
 </p>
 
-> This is my main discord bot base. Its a great template to start coding your awesome bots!!
+> This is my main discord bot template. Its a simple-to-use template for discord.js `v14.14.1` (other versions check [branches](https://github.com/IMXNOOBX/discord.bot/branches)). It has a lot of features and utilities to start coding your bot right away. It also has a simple command example (pingo).
 
 ## 🥏 Features
 
 ```js
-[main]
-  - Discord.js v14 support
-  - Global variables
-  - Secure token using dotenv
-  - Clean code
+const main = [
+  "Discord.js v14 support",
+  "Global variables",
+  "Secure token using eviroment variables",
+  "Clean code",
+]
 
-[utilities]
-  - Slash command support
-  - Chat command support
-  - Simple command example (ping)
-  - Advance command example (eval)
+const utilities = [
+  "Slash command support",
+  "Chat command support",
+  "Simple command example (ping)",
+]
 
-[error]
-  - Error handling
-  - Discord logging (using dis-logs)
+const error = [
+  "Error handling",
+  "Discord logging (using dis-logs package)",
+]
 ```
 
 ## 💈 Install
@@ -43,16 +45,9 @@ npm install
 ## 📗 Usage
 
 ```sh
-npm run start / node index.js
+npm run dev # For development
+npm run start # For production
 ```
-
-## 📖 Todo
-```js
-const todo = [
-  'A good way to handle message components'
-]
-```
-
 
 ## Author
 

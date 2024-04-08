@@ -13,8 +13,8 @@ module.exports.run = async (client, message) => {
         try {
             command.run(client, message, args) // if  a command is found run it :D
         } catch (error) {
-            client.log.sendErr('Error while running command: ' + error) // Log the error in discord and in the terminal
-            const errorCommandEmbed = new client.discord.MessageEmbed() // Send the executor the error log in case 
+            client.log.error('Error while running command: ' + error) // Log the error in discord and in the terminal
+            const errorCommandEmbed = new client.discord.EmbedBuilder() // Send the executor the error log in case 
                 .setColor("RED")
                 .addField(`Error while executing this command`, `\`\`\`js\n${error}\`\`\``)
             return message.channel.send({ embeds: [errorCommandEmbed] }).then(msg => {

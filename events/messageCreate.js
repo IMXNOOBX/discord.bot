@@ -9,17 +9,13 @@ module.exports.run = async (client, message) => {
     let command = client.commands.normal.get(cmd);
     if (!command) command = client.commands.normal.find(a => a.aliases && a.aliases.includes(cmd)); //Check aliases to use as commands
 
-    if (command) { // if no command found (alias either) return
-        try {
-            command.run(client, message, args) // if  a command is found run it :D
-        } catch (error) {
-            client.log.error('Error while running command: ' + error) // Log the error in discord and in the terminal
-            const errorCommandEmbed = new client.discord.EmbedBuilder() // Send the executor the error log in case 
-                .setColor("RED")
-                .addField(`Error while executing this command`, `\`\`\`js\n${error}\`\`\``)
-            return message.channel.send({ embeds: [errorCommandEmbed] }).then(msg => {
-                setTimeout(() => msg.delete(), 15000)
-            })
-        }
-    }
+    if (!command) return; // if no command found (alias either) return
+
+    command
+        .run(client, message, args) // if  a command is found run it :D
+        .catch(e => {
+            client.log.error(e)
+            message.channel.send(`Error: ${e?.message || e}`)
+                .then(msg => setTimeout(() => msg.delete(), 15000))
+        });
 }

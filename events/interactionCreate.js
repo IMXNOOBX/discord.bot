@@ -17,14 +17,14 @@ module.exports.run = async (client, interaction) => {
                 });
             } else if (option.value) args.push(option.value);
         }
-        try {
-            command.run(client, interaction, args)
-        } catch (e) {
-            interaction.followUp({ content: `Error: something weird happened, the error has been reported!`, ephemeral: true });
-            client.log.error(e)
-        }
 
+        command
+            .run(client, interaction, args)
+            .catch(e => {
+                client.log.error(e)
+                interaction
+                    .followUp({ content: `Error: ${e}`, ephemeral: true })
+                    .catch(e => { });
+            });
     }
-
 }
-

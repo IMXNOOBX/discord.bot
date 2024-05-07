@@ -4,8 +4,11 @@
   "version": "1.3.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "eslint .",
+
     "first": "cross-env NODE_ENV=development npm i && node index.js",
+    "npmupdate": "npx npm-check-updates -u && npm i",
+    
     "start": "cross-env NODE_ENV=production node index.js",
     "dev": "cross-env NODE_ENV=development nodemon index.js --delay 2.5"
   },
@@ -25,13 +28,16 @@
   },
   "homepage": "https://github.com/IMXNOOBX/discord.bot#readme",
   "dependencies": {
-    "dis-logs": "^1.3.4",
-    "discord.js": "^14.14.1",
+    "dis-logs": "^1.3.5",
+    "discord.js": "^14.15.2",
     "dotenv": "^16.4.5",
     "ms": "^2.1.3"
   },
   "devDependencies": {
+    "@eslint/js": "^9.2.0",
     "cross-env": "^7.0.3",
+    "eslint": "^9.2.0",
+    "globals": "^15.1.0",
     "nodemon": "^3.1.0"
   }
 }

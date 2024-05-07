@@ -1,27 +1,28 @@
+require('dotenv').config()
 const Discord = require('discord.js');
 const { Webhook } = require('dis-logs');
 
 const fs = require('fs');
-const auth = require('dotenv').config()
+
 const client = new Discord.Client({
     intents: [
         Discord.GatewayIntentBits.Guilds,
         Discord.GatewayIntentBits.GuildMessages,
-        Discord.GatewayIntentBits.MessageContent,
-        Discord.GatewayIntentBits.GuildMembers,
+        Discord.GatewayIntentBits.MessageContent,   /* required for CHAT commands, requires MESSAGE CONTENT INTENT */
+        Discord.GatewayIntentBits.GuildMembers,     /* requires SERVER MEMBERS INTENT */
         Discord.GatewayIntentBits.GuildWebhooks,
         Discord.GatewayIntentBits.DirectMessages
     ],
-    //partials: [
-    //    Discord.Partials.Channel, // Required to receive DMs
-    //]
+    /**
+     * @brief Partials are required to receive DMs
+        partials: [
+            Discord.Partials.Channel
+        ]
+     */
 });
 
-
-
-
 client.ms = require('ms');
-client.config = require('./config/config.json'); // Same with all of these
+client.config = require('./config/config.json'); 
 client.log = new Webhook(process.env.LOG_WEBHOOK);
 
 client.discord = Discord;
@@ -33,18 +34,21 @@ client.commands.buttons = new Discord.Collection();
 client.commands.menus = new Discord.Collection();
 client.commands.slash = new Discord.Collection();
 
-
 // Load all handlers
 const handlers = fs.readdirSync(`./handler`)
     .filter(file => file.endsWith('.js') || file.endsWith('.ts'));
 
 handlers
     .forEach(handler => {
-        require(`./handler/${handler}`)(client);
+        try {
+            require(`./handler/${handler}`)(client);
+        } catch (e) {
+            client.log.error('[HANDLER] | Error while loading: ' + handler + ', ' + e);
+        }
     });
 
 client
     .login(process.env.BOT_TOKEN)
     .catch(err => {
-        client.log.error('[BOT] | Login Error. Discord Response: ' + err);
+        client.log.error('[BOT] | Failed to log in. Discord response: ' + err);
     });

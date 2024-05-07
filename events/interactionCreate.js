@@ -24,7 +24,7 @@ module.exports.run = async (client, interaction) => {
                 client.log.error(e)
                 interaction
                     .followUp({ content: `Error: ${e}`, ephemeral: true })
-                    .catch(e => { });
+                    .catch(e => e);
             });
     }
 }

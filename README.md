@@ -1,38 +1,46 @@
-<h1 align="center">noob's djs template</h1>
-<p>
-  <img alt="Version" src="https://img.shields.io/badge/version-1.2.4-blue.svg?cacheSeconds=2592000" />
-  <a href="https://github.com/IMXNOOBX/snooby#readme" target="_blank">
-    <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
-  </a>
-  <a href="https://github.com/IMXNOOBX/snooby/graphs/commit-activity" target="_blank">
-    <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" />
-  </a>
-  <a href="https://github.com/IMXNOOBX/snooby/blob/main/LICENSE.md" target="_blank">
-    <img alt="License: ISC" src="https://img.shields.io/github/license/IMXNOOBX/djs.base" />
-  </a>
-</p>
+<h1 
+  align="center"
+  >
+  noob's djs template
+</h1>
 
-> This is my main discord bot template. Its a simple-to-use template for discord.js `v14.14.1` (other versions check [branches](https://github.com/IMXNOOBX/discord.bot/branches)). It has a lot of features and utilities to start coding your bot right away. It also has a simple command example (pingo).
+<div 
+  align="center"
+  >
+
+  ![Version](https://img.shields.io/badge/version-1.3.0-blue.svg?cacheSeconds=2592000)
+  ![Documentation](https://img.shields.io/badge/documentation-yes-brightgreen.svg)
+  ![Maintenance](https://img.shields.io/badge/maintained-yes-brightgreen.svg)
+  ![License: CC-BY-NC-4.0](https://img.shields.io/badge/license-CC.BY.NC.4.0-brightgreen.svg)
+  
+</div>
+
+> This is my main discord bot template. Its a simple-to-use template for discord.js `^14.15.*` (other versions check [branches](https://github.com/IMXNOOBX/discord.bot/branches)). It has a lot of features and utilities to start coding your bot right away. It also has a simple command example (pingo).
+
+## 🧩 Implementations
+> Below are the public bots that use this template.
+
+- [**EmoteUniverse**](https://bot.noob.bio): Great bot that helps you manage emotes in yout server. [Invite](https://bot.noob.bio/invite) | [Website](https://bot.noob.bio) | [Github](#)
 
 ## 🥏 Features
 
 ```js
 const main = [
-  "Discord.js v14 support",
-  "Global variables",
-  "Secure token using eviroment variables",
-  "Clean code",
+  "discord.js v14 support",
+  "global variables",
+  "secure token using eviroment variables",
+  "clean code", // I try to keep the code clean and easy to understand
 ]
 
 const utilities = [
-  "Slash command support",
-  "Chat command support",
-  "Simple command example (ping)",
+  "slash command support",
+  "chat command support",
+  "simple command example (ping)",
 ]
 
 const error = [
-  "Error handling",
-  "Discord logging (using dis-logs package)",
+  "error handling",
+  "discord logging (using dis-logs package)",
 ]
 ```
 
@@ -48,21 +56,6 @@ npm install
 npm run dev # For development
 npm run start # For production
 ```
-
-## Author
-
-👤 **IMXNOOBX**
-
-* Website: https://imxnoobx.xyz
-* Github: [@IMXNOOBX](https://github.com/IMXNOOBX)
-
-## 🤝 Contributing
-
-Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/IMXNOOBX/djs.base/issues). You can also take a look at the [contributing guide](https://github.com/IMXNOOBX/djs.base/blob/master/CONTRIBUTING.md).
-
-## Show your support
-
-Give a ⭐️ if this project helped you!
 
 # 🔖 License & Copyright
 

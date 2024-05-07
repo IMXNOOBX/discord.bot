@@ -3,15 +3,16 @@ const { Routes } = require('discord-api-types/v9');
 const { readdirSync } = require('fs')
 let slashCmd = []
 module.exports = (client) => {
+    client.log.console('[SLASH] | Loading slash commands...');
 
-    const commands = readdirSync(`./commands/slash/`)
+    const files = readdirSync(`./commands/slash/`)
         .filter(file => file.endsWith('.js') || file.endsWith('.ts'));
 
-    for (let file of commands) {
+    for (let file of files) {
         let slash = require(`../commands/slash/${file}`);
 
         if (!slash.name) {
-            client.log.error('[BOT] | Error Loading: ' + file)
+            client.log.error('[SLASH] | Error Loading: ' + file)
             continue;
         }
 
@@ -31,7 +32,7 @@ module.exports = (client) => {
         slashCmd.push(data);
     }
 
-    client.log.console('[BOT] | slash commands loaded sucessfully!');
+    client.log.console('[SLASH] | Commands loaded sucessfully!');
 
     /**
      * @brief Register slash commands once the bot is ready
@@ -52,6 +53,6 @@ module.exports = (client) => {
                 },
             );
 
-            client.log.console('[BOT] | Slash commands registered sucessfully!');
+            client.log.console('[SLASH] | Slash commands registered sucessfully!');
         })
 }

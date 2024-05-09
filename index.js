@@ -22,7 +22,6 @@ const client = new Discord.Client({
 });
 
 client.ms = require('ms');
-client.config = require('./config/config.json'); 
 client.log = new Webhook(process.env.LOG_WEBHOOK);
 
 client.discord = Discord;

@@ -25,5 +25,6 @@ module.exports = (client) => {
         }
     }
 
-    client.log.console('[EVENTS] | Listeners loaded sucessfully!');
+    client.log.console(`[EVENTS] | Loaded ${files.length} event listeners`);
+
 }

@@ -36,26 +36,25 @@ const utilities = [
   "slash command support",
   "chat command support",
   "simple command example (ping)",
+  "more explemples using essential bot features",
 ]
 
 const error = [
   "error handling",
   "discord logging (using dis-logs package)",
 ]
+
+const docs = [
+  "documentation",
+  "easy to understand",
+  "easy to use",
+]
 ```
 
-## 💈 Install
+## 📚 Documentation
+> Check out the wiki for more information about the template and how to use it, even if its your first discord bot ever.
+### Check the [**Wiki Here**](./wiki)
 
-```sh
-npm install
-```
-
-## 📗 Usage
-
-```sh
-npm run dev # For development
-npm run start # For production
-```
 
 # 🔖 License & Copyright
 

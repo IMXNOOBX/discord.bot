@@ -1,6 +1,6 @@
 module.exports.run = async (client) => {
   client.log.console(
-    `[BOT] | Username: ${client.user.tag} | Guilds: ${client.guilds.cache.size} servers | Users: ${client.users.cache.size} total users`
+    `[BOT] | ${client.user.tag} [${process.env.BOT_PREFIX || '!'}][SO: ${process.env.BOT_SERVERONLY ? 'Yes' : 'No'}] | Guilds: ${client.guilds.cache.size}, Users: ${client.users.cache.size} in total`
   );
   client.user.setStatus("dnd"); // online, idle, dnd, invisible
 

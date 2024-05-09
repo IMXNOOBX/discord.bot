@@ -1,11 +1,21 @@
 module.exports.run = async (client, interaction) => {
-    if (interaction.isCommand()) { // First check if the interaction is a command registered in hSlash.js
-        await interaction.deferReply({ ephemeral: false }).catch(() => { }); // if ephemeral: true all the slash commands will be answered as ephemeral and only the executor user will be able to see them
-
-        if (interaction.guildId == null) return; // Filter out DMs and other non-guild interactions
+    if (interaction.isCommand()) { // First check if the interaction is a type command
+        if (
+            process.env.BOT_SERVERONLY == 1 &&
+            interaction.guildId == null
+        ) return;
 
         const command = client.commands.slash.get(interaction.commandName);
         if (!command) return;
+
+        /**
+         * @brief Defer the reply to avoid the 3 seconds timeout
+         * @note if ephemeral is true only the executor user will be able to see the response
+         */
+        await interaction
+            .deferReply({ ephemeral: command.ephemeral || false })
+            .catch(() => { }); // Catch any error
+
 
         const args = [];
 

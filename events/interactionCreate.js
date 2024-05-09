@@ -27,4 +27,16 @@ module.exports.run = async (client, interaction) => {
                     .catch(e => e);
             });
     }
+
+    if (interaction.isAutocomplete()) {
+        const command = client.commands.slash.get(interaction.commandName);
+
+        if (!command) return;
+
+        command
+            .autocomplete(client, interaction)
+            .catch(e => {
+                client.log.error("Auto complete exception: " + e);
+            });
+    }
 }

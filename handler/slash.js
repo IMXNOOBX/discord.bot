@@ -2,6 +2,7 @@ const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
 const { readdirSync } = require('fs')
 let slashCmd = []
+
 module.exports = (client) => {
     client.log.console('[SLASH] | Loading slash commands...');
 
@@ -11,8 +12,12 @@ module.exports = (client) => {
     for (let file of files) {
         let slash = require(`../commands/slash/${file}`);
 
-        if (!slash.name) {
-            client.log.error('[SLASH] | Error Loading: ' + file)
+        if (
+            !slash.name || 
+            !slash.description ||
+            !slash.run || typeof slash.run !== 'function'
+        ) {
+            client.log.error(`[SLASH] | Error loading: ${file} (missing name, description or run function)`);
             continue;
         }
 
@@ -32,7 +37,7 @@ module.exports = (client) => {
         slashCmd.push(data);
     }
 
-    client.log.console('[SLASH] | Commands loaded sucessfully!');
+    client.log.console(`[SLASH] | Loaded ${slashCmd.length}/${files.length} slash commands`);
 
     /**
      * @brief Register slash commands once the bot is ready

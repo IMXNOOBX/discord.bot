@@ -3,8 +3,23 @@ const { readdirSync } = require('fs')
 module.exports = (client) => {
     client.log.console('[PLUGINS] | Loading plugins...');
 
-    const files = readdirSync(`./plugins/`)
-        .filter(file => file.endsWith('.js') || file.endsWith('.ts'))
+    let files = [];
+
+    try {
+        files = readdirSync(`./plugins/`)
+            .filter(file => file.endsWith('.js') || file.endsWith('.ts'));
+    } catch (e) {
+        client.log.warn('[PLUGINS] | Plugins folder not found, skipping...');
+        return;
+    }
+
+    if (
+        !files || files.length < 1
+    ) {
+        client.log.console('[PLUGINS] | No plugins found, skipping...');
+        return;
+    }
+
 
     for (let file of files) {
         let plugin = require(`../plugins/${file}`);
@@ -34,5 +49,5 @@ module.exports = (client) => {
         if (plugin.init && typeof plugin.init === 'function')
             plugin.init(client);
 
-    client.log.console('[PLUGINS] | Initialized successfully!');
+    client.log.console(`[PLUGINS] | Loaded ${client.plugins.size}/${files.length} plugins`);
 }

@@ -53,7 +53,7 @@ const docs = [
 
 ## 📚 Documentation
 > Check out the wiki for more information about the template and how to use it, even if its your first discord bot ever.
-### Check the [**Wiki Here**](./wiki)
+### Check the [**Wiki Here**](https://github.com/IMXNOOBX/discord.bot/wiki)
 
 
 # 🔖 License & Copyright

@@ -22,14 +22,23 @@ module.exports = (client) => {
 
 
     for (let file of files) {
-        let plugin = require(`../plugins/${file}`);
+        let plugin;
+
+        try {
+            plugin = require(`../plugins/${file}`);
+        } catch (e) {
+            client.log.error('[PLUGINS] | Failed to load: ' + file + ', ' + e)
+            continue;
+        }
+
+        if (plugin.disabled) 
+            continue;
 
         if (
             !plugin.name ||
-            !plugin.description ||
-            !plugin.run || typeof plugin.run !== 'function'
+            !plugin.init || typeof plugin.init !== 'function'
         ) {
-            client.log.error('[PLUGINS] | Failed to load: ' + file)
+            client.log.error(`[PLUGINS] | Error loading: ${file} (missing name or run function)`)
             continue;
         }
 
@@ -43,11 +52,16 @@ module.exports = (client) => {
         client.plugins.set(plugin.name, plugin);
     }
 
-    client.log.console('[PLUGINS] | Loaded successfully!');
+    if (!client.plugins)
+        return client.log.warn('[PLUGINS] | No plugins loaded');
+
+    client.log.console('[PLUGINS] | Loaded successfully, initializing...');
 
     for (let plugin of client.plugins.values())
         if (plugin.init && typeof plugin.init === 'function')
-            plugin.init(client);
+            client[plugin.name] = plugin
+                                    .init(client)
+                                    .catch(e => client.log.error(`[PLUGINS] | Error while initializing ${plugin.name}: ${e}`));
 
     client.log.console(`[PLUGINS] | Loaded ${client.plugins.size}/${files.length} plugins`);
 }

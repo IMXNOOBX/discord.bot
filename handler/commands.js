@@ -13,7 +13,7 @@ module.exports = (client) => {
             !cmd.name ||
             !cmd.run || typeof cmd.run !== 'function'
         ) {
-            client.log.error(`[CHAT] | Error loading: ${file} (missing name, description or run function)`);
+            client.log.error(`[CHAT] | Error loading: ${file} (missing name or run function)`);
             continue;
         }
 

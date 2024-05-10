@@ -25,9 +25,12 @@ client.ms = require('ms');
 client.log = new Webhook(process.env.LOG_WEBHOOK);
 
 client.discord = Discord;
+
+client.plugins = new Discord.Collection();
+client.events = new Discord.Collection();
+
 client.commands = new Discord.Collection();
 client.commands.normal = new Discord.Collection();
-client.events = new Discord.Collection();
 client.commands.normal.aliases = new Discord.Collection();
 client.commands.buttons = new Discord.Collection();
 client.commands.menus = new Discord.Collection();

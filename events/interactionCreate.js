@@ -16,7 +16,6 @@ module.exports.run = async (client, interaction) => {
             .deferReply({ ephemeral: command.ephemeral || false })
             .catch(() => { }); // Catch any error
 
-
         const args = [];
 
         for (let option of interaction.options.data) {

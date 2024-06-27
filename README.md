@@ -29,7 +29,7 @@ const main = [
   "discord.js v14 support",
   "global variables",
   "secure token using eviroment variables",
-  "clean code", // I try to keep the code clean and easy to understand
+  "clean code", // code clean and easy to understand
 ]
 
 const utilities = [

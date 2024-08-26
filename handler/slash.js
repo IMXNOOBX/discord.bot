@@ -53,7 +53,7 @@ module.exports = (client) => {
             }).setToken(process.env.BOT_TOKEN);
 
             await rest.put(
-                Routes.applicationCommands(process.env.BOT_ID), {
+                Routes.applicationCommands(client.user.id), {
                     body: slashCmd
                 },
             );

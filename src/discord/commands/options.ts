@@ -7,7 +7,7 @@ import log from "@/utilities/log"
  */
 
 export default {
-    name: 'complete',
+    name: 'options',
     description: 'Show how to use many different options in a command',
     options: [
         {
@@ -74,7 +74,7 @@ export default {
         const role = interaction.options.getRole('role') || 'No role provided';
         const mentionable = interaction.options.getMentionable('mentionable') || 'No mentionable provided';
         const number = interaction.options.getNumber('number') || 'No number provided';
-        const attachment = interaction.options.getAttachment('attachment') || 'No attachment provided';
+        const attachment = interaction.options.getAttachment('attachment')?.name || 'No attachment provided';
 
         log.info(
             'string:', string, 

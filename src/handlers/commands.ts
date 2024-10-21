@@ -25,14 +25,13 @@ export default async () => {
             continue;
         }
 
-        log.info(`commands - Loaded command: ${cmd.name}`);
         commands.set(cmd.name, cmd);
 
         if (cmd.aliases && Array.isArray(cmd.aliases))
             cmd.aliases.forEach((alias: string) => aliases.set(alias, cmd.name));
     }
 
-    log.info(`commands - Loaded ${commands.size} commands`);
+    log.info(`commands - Loaded ${commands.size} commands: ${[...commands.keys()].join(', ')}`);
 
         /**
      * @brief Register slash commands once the bot is ready

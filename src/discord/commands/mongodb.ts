@@ -1,4 +1,5 @@
 import { ChatInputCommandInteraction } from "discord.js"
+import { plugins } from "@/discord"
 
 export default {
     name: 'mongodb',
@@ -18,22 +19,24 @@ export default {
 		},
     ],
     run: async (interaction: ChatInputCommandInteraction) => {
-        const show = interaction.options.getBoolean('show')
-        const user = interaction.options.getString('user')
+        const mongodb = plugins.get('mongodb')
 
         if (
-            !client.mongodb
+            !mongodb
         ) 
         return interaction.followUp({ content: `> 🤯 MongoDB plugin not loaded` });
 
-        const { models } = await client.mongodb
+        const { models } = await mongodb;
+
+        const show = interaction.options.getBoolean('show')
+        const user = interaction.options.getString('user')
 
         if (
             show
         )  {
             const users = await models.User.find()
 
-            return interaction.followUp({ content: `> 😉 Users: ${users.map(u => u.username).join(', ') || 'No users in the db'}` })
+            return interaction.followUp({ content: `> 😉 Users: ${users.map((u: any) => u.username).join(', ') || 'No users in the db'}` })
         }
 
         if (
@@ -44,7 +47,7 @@ export default {
 
             if (
                 !username
-            ) return interaction.followUp({ content: `> 🤯 You need to provide a username` })
+            ) return interaction.followUp({ content: `> 🩻 You need to provide a username` })
 
             const newUser = new models.User({ username, email: email || 'no@email.com' })
             await newUser.save()
@@ -52,6 +55,6 @@ export default {
             return interaction.followUp({ content: `> 🚀 User added: ${username}` })
         }
 
-        return interaction.followUp({ content: `> 🤯 This is not how you should use the command >:(` })
+        return interaction.followUp({ content: `> 🤨 This is not how you should use the command >:(` })
     }
 }

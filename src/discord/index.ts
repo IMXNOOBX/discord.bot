@@ -3,6 +3,7 @@ import log from "@/utilities/log";
 
 const commands = new Collection<string, any>();
 const aliases = new Collection<string, string>();
+const plugins = new Collection<string, any>();
 var client: Client;
 
 const init = async () => {
@@ -29,5 +30,6 @@ export {
     init, 
 
     client,
-    commands, aliases 
+    commands, aliases,
+    plugins
 };

@@ -1,5 +1,6 @@
 import fs from 'fs';
 import { client } from '@/discord';
+import log from "@/utilities/log";
 
 export default async () => {
     const root = __dirname + '/../discord/events';
@@ -24,9 +25,9 @@ export default async () => {
 
             client.on(e.event, e.run);
         } catch (err) {
-            console.error(`Error loading event ${file}: ${err}`);
+            log.error(`Error loading event ${file}: ${err}`);
         }
     }
 
-    console.log(`[EVENTS] | Loaded ${files.length} events`);
+    log.info(`events -  Loaded ${files.length} events`);
 }

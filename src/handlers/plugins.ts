@@ -1,12 +1,13 @@
 import fs from 'fs';
+import log from '@/utilities/log';
 
 export default async () =>{
-    console.log('[PLUGINS] | Loading plugins...');
+    log.info('plugins - Loading plugins...');
 
     const root = __dirname + '/../plugins/';
     
     if (!fs.existsSync(root)) 
-        return console.log('[PLUGINS] | No plugins folder found, skipping...');
+        return log.warn('plugins - No plugins folder found, skipping...');
 
     const files = fs
             .readdirSync(root)
@@ -17,7 +18,7 @@ export default async () =>{
     if (
         !files || files.length < 1
     ) 
-        return console.log('[PLUGINS] | No plugins found, skipping...');
+        return log.info('plugins - No plugins found, skipping...');
 
     const plugins = new Map();
 
@@ -26,8 +27,10 @@ export default async () =>{
 
         try {
             plugin = await import(`${root}/${file}`);
+
+            plugin = plugin.default || plugin;
         } catch (e) {
-            console.log('[PLUGINS] | Failed to load: ' + file + ', ' + e)
+            log.warn('plugins - Failed to load: ' + file + ', ' + e)
             continue;
         }
 
@@ -38,14 +41,14 @@ export default async () =>{
             !plugin.name ||
             !plugin.init || typeof plugin.init !== 'function'
         ) {
-            console.log(`[PLUGINS] | Error loading: ${file} (missing name or init function)`)
+            log.warn(`plugins - Error loading: ${file} (missing name or init function)`)
             continue;
         }
 
         if (
             plugins.get(plugin.name)
         ) {
-            console.log('[PLUGINS] | Already loaded module: ' + plugin.name)
+            log.warn('plugins - Already loaded module: ' + plugin.name)
             continue;
         }
 
@@ -53,17 +56,17 @@ export default async () =>{
     }
 
     if (!plugins)
-        return console.warn('[PLUGINS] | No plugins loaded');
+        return log.warn('plugins - No plugins loaded');
 
-    console.log('[PLUGINS] | Loaded successfully, initializing...');
+    log.info('plugins - Loaded successfully, initializing...');
 
     for (let plugin of plugins.values())
         if (plugin.init && typeof plugin.init === 'function')
             plugin
                 .init()
                 .catch((e: any) => 
-                    console.error(`[PLUGINS] | Error while initializing ${plugin.name}: ${e}`)
+                    log.error(`plugins - Error while initializing ${plugin.name}: ${e}`)
             );
 
-    console.log(`[PLUGINS] | Loaded ${plugins.size}/${files.length} plugins`);
+    log.info(`plugins - Loaded ${plugins.size}/${files.length} plugins`);
 }

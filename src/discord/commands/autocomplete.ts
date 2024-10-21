@@ -1,5 +1,5 @@
 import { ChatInputCommandInteraction, AutocompleteInteraction } from "discord.js"
-
+import log from "@/utilities/log"
 /**
  * @brief This is a complete example of a slash command with many different options
  * @see https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-types
@@ -71,7 +71,7 @@ export default {
                 content: '> 🚧 Invalid options selected',
             });
 
-        console.log(
+        log.info(
             'Amazing:', amazing,
             'Wow:', wow
         )

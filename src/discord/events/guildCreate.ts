@@ -1,8 +1,9 @@
 import { Guild } from "discord.js";
+import log from "@/utilities/log"
 
 export const event = 'guildCreate';
 
 export const run = async (guild: Guild) => {
-    console.log(`[BOT] | Joined guild ${guild.name} (${guild.id})`);
+    log.info(`bot - Joined guild ${guild.name} (${guild.id})`);
 }
 

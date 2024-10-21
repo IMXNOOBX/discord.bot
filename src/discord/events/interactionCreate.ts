@@ -1,5 +1,6 @@
 import { Interaction, ApplicationCommandOptionType } from "discord.js";
 import { commands, client } from "@/discord";
+import log from "@/utilities/log";
 
 export const event = 'interactionCreate';
 
@@ -37,7 +38,7 @@ export const run = async (interaction: Interaction) => {
         command
             .run(interaction, args)
             .catch((e: any) => {
-                console.error(e);
+                log.error(e);
 
                 interaction
                     .followUp({ content: `Error: ${e}`, ephemeral: true })
@@ -53,7 +54,7 @@ export const run = async (interaction: Interaction) => {
         command
             .autocomplete(interaction)
             .catch((e: any) => {
-                console.error(e);
+                log.error(e);
             });
     }
 }

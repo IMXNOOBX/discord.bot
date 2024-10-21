@@ -2,6 +2,7 @@ import fs from 'fs';
 import { REST } from '@discordjs/rest';
 import { Routes } from 'discord-api-types/v9';
 import { client, commands, aliases } from '@/discord';
+import log from "@/utilities/log"
 
 export default async () => {
     const root = __dirname + '/../discord/commands';
@@ -20,18 +21,18 @@ export default async () => {
             !cmd.name ||
             !cmd.run || typeof cmd.run !== 'function'
         ) {
-            console.log(`[COMMANDS] | Error loading: ${file} (missing name or run function) ${typeof cmd.run}`);
+            log.info(`commands - Error loading: ${file} (missing name or run function) ${typeof cmd.run}`);
             continue;
         }
 
-        console.log(`[COMMANDS] | Loaded command: ${cmd.name}`);
+        log.info(`commands - Loaded command: ${cmd.name}`);
         commands.set(cmd.name, cmd);
 
         if (cmd.aliases && Array.isArray(cmd.aliases))
             cmd.aliases.forEach((alias: string) => aliases.set(alias, cmd.name));
     }
 
-    console.log(`[COMMANDS] | Loaded ${commands.size} commands`);
+    log.info(`commands - Loaded ${commands.size} commands`);
 
         /**
      * @brief Register slash commands once the bot is ready
@@ -52,6 +53,6 @@ export default async () => {
                 },
             );
 
-            console.log('[BOT] | slash commands registered successfully!');
+            log.info('bot - Slash commands registered successfully!');
         })
 }

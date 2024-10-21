@@ -1,13 +1,14 @@
 import { ActivityType } from 'discord.js';
 import { client } from '@/discord';
+import log from "@/utilities/log"
 
 export const event = 'ready';
 
 export const run = async () => {
   if (!client || !client.user) return; // Will never happen, just to make TS happy
 
-  console.log(
-    `[BOT] | ${client.user.tag} [${process.env.BOT_PREFIX || '!'}][Server Only: ${process.env.BOT_SERVERONLY ? 'Yes' : 'No'}] | Guilds: ${client.guilds.cache.size}, Users: ${client.users.cache.size} in total`
+  log.info(
+    `bot - ${client.user.tag} (Server Only: ${process.env.BOT_SERVERONLY ? 'Yes' : 'No'}) guilds: {${client.guilds.cache.size}}, users: {${client.users.cache.size}}`
   );
 
   client.user.setStatus("dnd"); // online, idle, dnd, invisible

@@ -1,4 +1,5 @@
 import Discord, { Client, Collection } from 'discord.js';
+import log from "@/utilities/log";
 
 const commands = new Collection<string, any>();
 const aliases = new Collection<string, string>();
@@ -17,7 +18,7 @@ const init = async () => {
     await client
         .login(process.env.BOT_TOKEN)
         .catch(err => {
-            console.error('[BOT] | Failed to log in. Discord response: ' + err);
+            log.error('bot - Failed to log in. Discord response: ' + err);
         });
 
     return client;

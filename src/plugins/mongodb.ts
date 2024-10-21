@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 /**
  * @brief MongoDB plugin to access MongoDB database
@@ -14,11 +14,11 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', userSchema);
 
-module.exports = {
+export default {
     name: 'mongodb',
     description: 'MongoDB plugin to access MongoDB database',
     disabled: (process.env.MONGO_HOST) ? false : true,
-    init: async (client) => {
+    init: async () => {
 		if (
 			!process.env.MONGO_HOST || 
 			!process.env.MONGO_PORT || 
@@ -30,22 +30,22 @@ module.exports = {
         const db_url = `mongodb://${process.env.MONGO_HOST}:${process.env.MONGO_PORT}`;
         const db_name = process.env.MONGO_DB;
 
-        client.log.console(`[MongoDB] | Connecting to ${db_url}/${db_name} ...`);
+        console.log(`[MongoDB] | Connecting to ${db_url}/${db_name} ...`);
 
 
 		mongoose.connect(`${db_url}/${db_name}`, { });
 		const db = mongoose.connection;
 
-        db.on('error', (err) => {
+        db.on('error', (err: any) => {
 			throw new Error(`MongoDB connection error: ${err}`)
         });
 
         db.once('open', async () => {
-			client.log.success(`Connected to MongoDB`);
+            console.log(`[MongoDB] | Connected to ${db_url}/${db_name}`);
 
             const collections = await mongoose.connection.db.listCollections().toArray();
 
-			client.log.success(`Found ${collections.length} collections defined.`)
+            console.log(`[MongoDB] | Found ${collections.length} collections defined.`)
         });
         
         // You should return the database connection and the models you want to use

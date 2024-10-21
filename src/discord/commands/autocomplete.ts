@@ -1,9 +1,11 @@
+import { ChatInputCommandInteraction, AutocompleteInteraction } from "discord.js"
+
 /**
  * @brief This is a complete example of a slash command with many different options
  * @see https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-types
  */
 
-module.exports = {
+export default {
     name: 'autocomplete',
     description: 'Show how to use the auto complete in a command',
     options: [
@@ -15,13 +17,13 @@ module.exports = {
         },
         {
 			name: "wow",
-			description: "I can show you diferent options dynamically in an option using auto complete",
+			description: "I can show you different options dynamically in an option using auto complete",
 			type: 3, // String,
 			autocomplete: true,
 			required: true
 		}
     ],
-    autocomplete: async (client, interaction) => {
+    autocomplete: async (interaction: AutocompleteInteraction) => {
         const option = interaction.options.getFocused(true);
 
 		const options = [];
@@ -60,9 +62,14 @@ module.exports = {
 		)
 			.catch(() => { });
     },
-    run: async (client, interaction) => {
+    run: async (interaction: ChatInputCommandInteraction) => {
         const amazing = interaction.options.getBoolean('amazing');
         const wow = interaction.options.getString('wow');
+
+        if (!wow || !amazing)
+            return interaction.followUp({
+                content: '> 🚧 Invalid options selected',
+            });
 
         console.log(
             'Amazing:', amazing,

@@ -1,11 +1,13 @@
+import { ChatInputCommandInteraction } from "discord.js"
+
 /**
  * @brief This is a complete example of a slash command with many different options
  * @see https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-types
  */
 
-module.exports = {
+export default {
     name: 'complete',
-    description: 'Show how to use many diferent options in a command',
+    description: 'Show how to use many different options in a command',
     options: [
         {
 			name: "string",
@@ -62,7 +64,7 @@ module.exports = {
             required: false
         },
     ],
-    run: async (client, interaction) => {
+    run: async (interaction: ChatInputCommandInteraction) => {
         const string = interaction.options.getString('string') || 'No string provided';
         const integer = interaction.options.getInteger('integer') || 'No integer provided';
         const boolean = interaction.options.getBoolean('boolean') || 'No boolean provided';

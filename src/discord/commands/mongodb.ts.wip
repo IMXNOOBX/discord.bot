@@ -1,4 +1,7 @@
-module.exports = {
+import { ChatInputCommandInteraction } from "discord.js"
+
+
+export default {
     name: 'mongodb',
     description: 'Shows how to use MongoDB plugin',
     options: [
@@ -15,7 +18,7 @@ module.exports = {
 			required: false
 		},
     ],
-    run: async (client, interaction) => {
+    run: async (interaction: ChatInputCommandInteraction) => {
         const show = interaction.options.getBoolean('show')
         const user = interaction.options.getString('user')
 

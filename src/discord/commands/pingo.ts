@@ -1,4 +1,4 @@
-import { Client, ChatInputCommandInteraction } from "discord.js"
+import { ChatInputCommandInteraction } from "discord.js"
 
 export default {
     name: 'pingo',

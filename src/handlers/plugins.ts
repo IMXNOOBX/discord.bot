@@ -1,5 +1,6 @@
 import fs from 'fs';
 import log from '@/utilities/log';
+import { plugins } from '@/discord';
 
 export default async () =>{
     log.info('plugins - Loading plugins...');
@@ -20,7 +21,7 @@ export default async () =>{
     ) 
         return log.info('plugins - No plugins found, skipping...');
 
-    const plugins = new Map();
+    // const plugins = new Map();
 
     for (const file of files) {
         let plugin;

@@ -2,6 +2,7 @@
 
 # Custom
 .build/
+typos
 
 # Dependencies
 /node_modules

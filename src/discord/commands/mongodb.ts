@@ -1,5 +1,5 @@
 import { ChatInputCommandInteraction } from "discord.js"
-import { plugins } from "@/discord"
+import discord from "@/discord"
 
 export default {
     name: 'mongodb',
@@ -19,7 +19,7 @@ export default {
 		},
     ],
     run: async (interaction: ChatInputCommandInteraction) => {
-        const mongodb = plugins.get('mongodb')
+        const mongodb = discord.plugins.get('mongodb')
 
         if (
             !mongodb

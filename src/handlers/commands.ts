@@ -1,7 +1,7 @@
 import fs from 'fs';
 import { REST } from '@discordjs/rest';
 import { Routes } from 'discord-api-types/v9';
-import { client, commands, aliases } from '@/discord';
+import discord from '@/discord';
 import log from "@/utilities/log"
 
 export default async () => {
@@ -25,13 +25,13 @@ export default async () => {
             continue;
         }
 
-        commands.set(cmd.name, cmd);
+        discord.commands.set(cmd.name, cmd);
 
         if (cmd.aliases && Array.isArray(cmd.aliases))
-            cmd.aliases.forEach((alias: string) => aliases.set(alias, cmd.name));
+            cmd.aliases.forEach((alias: string) => discord.aliases.set(alias, cmd.name));
     }
 
-    log.info(`commands - Loaded ${commands.size} commands: ${[...commands.keys()].join(', ')}`);
+    log.info(`commands - Loaded ${discord.commands.size} commands: ${[...discord.commands.keys()].join(', ')}`);
 
         /**
      * @brief Register slash commands once the bot is ready
@@ -40,15 +40,15 @@ export default async () => {
      *     .on('ready', async () => await client.application.commands.set(slashCmd))
      */
 
-    client
+        discord.client
         .on('ready', async () => {
             const rest = new REST({
                 version: '9'
             }).setToken(process.env.BOT_TOKEN as string);
 
             await rest.put(
-                Routes.applicationCommands(client.user?.id as string), {
-                    body: commands
+                Routes.applicationCommands(discord.client.user?.id as string), {
+                    body: discord.commands
                 },
             );
 

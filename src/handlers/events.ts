@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { client } from '@/discord';
+import discord from '@/discord';
 import log from "@/utilities/log";
 
 export default async () => {
@@ -23,7 +23,7 @@ export default async () => {
 
             e.event = e.event || file.replace('.js', '').replace('.ts', '');
 
-            client.on(e.event, e.run);
+            discord.client.on(e.event, e.run);
         } catch (err) {
             log.error(`Error loading event ${file}: ${err}`);
         }

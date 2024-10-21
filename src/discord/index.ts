@@ -4,18 +4,17 @@ import log from "@/utilities/log";
 const commands = new Collection<string, any>();
 const aliases = new Collection<string, string>();
 const plugins = new Collection<string, any>();
-var client: Client;
+
+const client: Client = new Discord.Client({
+    intents: [
+        Discord.GatewayIntentBits.Guilds,
+        Discord.GatewayIntentBits.GuildMessages,
+        Discord.GatewayIntentBits.GuildMembers,
+        Discord.GatewayIntentBits.GuildWebhooks,
+    ],
+});
 
 const init = async () => {
-    client = new Discord.Client({ // Client instance
-        intents: [
-            Discord.GatewayIntentBits.Guilds,
-            Discord.GatewayIntentBits.GuildMessages,
-            Discord.GatewayIntentBits.GuildMembers,
-            Discord.GatewayIntentBits.GuildWebhooks,
-        ],
-    });
-
     await client
         .login(process.env.BOT_TOKEN)
         .catch(err => {
@@ -26,7 +25,7 @@ const init = async () => {
 }
 
 
-export { 
+export default { 
     init, 
 
     client,

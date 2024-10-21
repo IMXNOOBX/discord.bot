@@ -25,6 +25,6 @@ const init = async () => {
     log.info(`handler - ${handlers.length} handlers loaded`);
 }
 
-export {
+export default {
     init
 };

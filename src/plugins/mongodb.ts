@@ -1,20 +1,13 @@
 import mongoose from 'mongoose';
 import log from "@/utilities/log";
 
+import schemas from './schemas';
+
 /**
  * @brief MongoDB plugin to access MongoDB database
  * @param {Object} client - Discord client
  * @returns {Object} - MongoDB connection object and models
  */
-
-// You can define here your schemas or make a subdirectory for them and other modules
-const userSchema = new mongoose.Schema({
-    username: String,
-    email: String,
-});
-
-const User = mongoose.model('User', userSchema);
-
 export default {
     name: 'mongodb',
     description: 'MongoDB plugin to access MongoDB database',
@@ -50,6 +43,6 @@ export default {
         });
         
         // You should return the database connection and the models you want to use
-        return { db, models: { User } };
+        return { db, models: schemas };
     },
 }

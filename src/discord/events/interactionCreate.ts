@@ -1,5 +1,5 @@
 import { Interaction, ApplicationCommandOptionType } from "discord.js";
-import { commands, client } from "@/discord";
+import discord from "@/discord";
 import log from "@/utilities/log";
 
 export const event = 'interactionCreate';
@@ -12,7 +12,7 @@ export const run = async (interaction: Interaction) => {
         ) 
             return;
 
-        const command = commands.get(interaction.commandName);
+        const command = discord.commands.get(interaction.commandName);
 
         if (!command) return;
 
@@ -47,7 +47,7 @@ export const run = async (interaction: Interaction) => {
     }
 
     if (interaction.isAutocomplete()) {
-        const command = commands.get(interaction.commandName);
+        const command = discord.commands.get(interaction.commandName);
 
         if (!command) return;
 

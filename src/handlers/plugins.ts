@@ -1,6 +1,6 @@
 import fs from 'fs';
 import log from '@/utilities/log';
-import { plugins } from '@/discord';
+import discord from '@/discord';
 
 export default async () =>{
     log.info('plugins - Loading plugins...');
@@ -47,21 +47,21 @@ export default async () =>{
         }
 
         if (
-            plugins.get(plugin.name)
+            discord.plugins.get(plugin.name)
         ) {
             log.warn('plugins - Already loaded module: ' + plugin.name)
             continue;
         }
 
-        plugins.set(plugin.name, plugin);
+        discord.plugins.set(plugin.name, plugin);
     }
 
-    if (!plugins)
+    if (!discord.plugins)
         return log.warn('plugins - No plugins loaded');
 
     log.info('plugins - Loaded successfully, initializing...');
 
-    for (let plugin of plugins.values())
+    for (let plugin of discord.plugins.values())
         if (plugin.init && typeof plugin.init === 'function')
             plugin
                 .init()
@@ -69,5 +69,5 @@ export default async () =>{
                     log.error(`plugins - Error while initializing ${plugin.name}: ${e}`)
             );
 
-    log.info(`plugins - Loaded ${plugins.size}/${files.length} plugins`);
+    log.info(`plugins - Loaded ${discord.plugins.size}/${files.length} plugins`);
 }

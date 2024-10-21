@@ -1,11 +1,13 @@
 import { ActivityType } from 'discord.js';
-import { client } from '@/discord';
+import discord from '@/discord';
 import log from "@/utilities/log"
 
 export const event = 'ready';
 
 export const run = async () => {
-  if (!client || !client.user) return; // Will never happen, just to make TS happy
+  const client = discord.client;
+
+  if (!client.user) return log.warn('bot - Cosmic radiation flipped a byte and now the user is missing!');
 
   log.info(
     `bot - ${client.user.tag} (Server Only: ${process.env.BOT_SERVERONLY ? 'Yes' : 'No'}) guilds: {${client.guilds.cache.size}}, users: {${client.users.cache.size}}`

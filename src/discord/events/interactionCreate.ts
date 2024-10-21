@@ -1,11 +1,18 @@
-module.exports.run = async (client, interaction) => {
+import { Interaction, ApplicationCommandOptionType } from "discord.js";
+import { commands, client } from "@/discord";
+
+export const event = 'interactionCreate';
+
+export const run = async (interaction: Interaction) => {
     if (interaction.isCommand()) { // First check if the interaction is a type command
         if (
-            process.env.BOT_SERVERONLY == 1 &&
+            process.env.BOT_SERVERONLY == '1' &&
             interaction.guildId == null
-        ) return;
+        ) 
+            return;
 
-        const command = client.commands.slash.get(interaction.commandName);
+        const command = commands.get(interaction.commandName);
+
         if (!command) return;
 
         /**
@@ -19,7 +26,7 @@ module.exports.run = async (client, interaction) => {
         const args = [];
 
         for (let option of interaction.options.data) {
-            if (option.type === 'SUB_COMMAND') {
+            if (option.type === ApplicationCommandOptionType.Subcommand) {
                 if (option.name) args.push(option.name);
                 option.options?.forEach(x => {
                     if (x.value) args.push(x.value);
@@ -28,9 +35,10 @@ module.exports.run = async (client, interaction) => {
         }
 
         command
-            .run(client, interaction, args)
-            .catch(e => {
-                client.log.error(e)
+            .run(interaction, args)
+            .catch((e: any) => {
+                console.error(e);
+
                 interaction
                     .followUp({ content: `Error: ${e}`, ephemeral: true })
                     .catch(e => e);
@@ -38,14 +46,14 @@ module.exports.run = async (client, interaction) => {
     }
 
     if (interaction.isAutocomplete()) {
-        const command = client.commands.slash.get(interaction.commandName);
+        const command = commands.get(interaction.commandName);
 
         if (!command) return;
 
         command
-            .autocomplete(client, interaction)
-            .catch(e => {
-                client.log.error("Auto complete exception: " + e);
+            .autocomplete(interaction)
+            .catch((e: any) => {
+                console.error(e);
             });
     }
 }

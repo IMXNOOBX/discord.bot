@@ -1,7 +1,7 @@
 <h1 
   align="center"
   >
-  noob's djs template
+  noob's djs template (TS Version)
 </h1>
 
 <div 
@@ -15,12 +15,12 @@
   
 </div>
 
-> This is my main discord bot template. Its a simple-to-use template for discord.js `^14.15.*` (other versions check [branches](https://github.com/IMXNOOBX/discord.bot/branches)). It has a lot of features and utilities to start coding your bot right away. It also has a simple command example (pingo).
+> This is my main discord bot template. Its a simple-to-use template for discord.js `^14.16.*` (other versions check [branches](https://github.com/IMXNOOBX/discord.bot/branches)). It has a lot of features and utilities to start coding your bot right away. It also has a simple command example (pingo).
 
 ## 🧩 Implementations
 > Below are the public bots that use this template.
 
-- [**EmoteUniverse**](https://bot.noob.bio): Great bot that helps you manage emotes in yout server. [Invite](https://bot.noob.bio/invite) | [Website](https://bot.noob.bio) | [Github](#)
+- [**EmoteUniverse**](https://bot.noob.bio): Great bot that helps you manage emotes in your server. [Invite](https://bot.noob.bio/invite) | [Website](https://bot.noob.bio) | [Github](#)
 
 ## 🥏 Features
 
@@ -29,14 +29,12 @@ const main = [
   "discord.js v14 support",
   "global variables",
   "secure token using eviroment variables",
-  "clean code", // code clean and easy to understand
 ]
 
 const utilities = [
   "slash command support",
-  "chat command support",
-  "simple command example (ping)",
-  "more explemples using essential bot features",
+  // "chat command support", // removed in this main branch, use v14-js branch instead
+  "explemples using essential bot features",
 ]
 
 const error = [

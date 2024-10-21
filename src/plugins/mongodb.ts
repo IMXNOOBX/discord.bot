@@ -43,9 +43,9 @@ export default {
         db.once('open', async () => {
             console.log(`[MongoDB] | Connected to ${db_url}/${db_name}`);
 
-            const collections = await mongoose.connection.db.listCollections().toArray();
+            const collections = await mongoose.connection.db?.listCollections().toArray();
 
-            console.log(`[MongoDB] | Found ${collections.length} collections defined.`)
+            console.log(`[MongoDB] | Found ${collections?.length} collections defined.`)
         });
         
         // You should return the database connection and the models you want to use

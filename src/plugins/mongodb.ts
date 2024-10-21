@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import log from "@/utilities/log";
 
 /**
  * @brief MongoDB plugin to access MongoDB database
@@ -30,7 +31,7 @@ export default {
         const db_url = `mongodb://${process.env.MONGO_HOST}:${process.env.MONGO_PORT}`;
         const db_name = process.env.MONGO_DB;
 
-        console.log(`[MongoDB] | Connecting to ${db_url}/${db_name} ...`);
+        log.info(`[MongoDB] | Connecting to ${db_url}/${db_name} ...`);
 
 
 		mongoose.connect(`${db_url}/${db_name}`, { });
@@ -41,11 +42,11 @@ export default {
         });
 
         db.once('open', async () => {
-            console.log(`[MongoDB] | Connected to ${db_url}/${db_name}`);
+            log.info(`[MongoDB] | Connected to ${db_url}/${db_name}`);
 
             const collections = await mongoose.connection.db?.listCollections().toArray();
 
-            console.log(`[MongoDB] | Found ${collections?.length} collections defined.`)
+            log.info(`[MongoDB] | Found ${collections?.length} collections defined.`)
         });
         
         // You should return the database connection and the models you want to use

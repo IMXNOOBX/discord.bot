@@ -1,4 +1,5 @@
 import fs from 'fs';
+import log from "@/utilities/log";
 
 const init = async () => {
     const root = __dirname;
@@ -15,13 +16,13 @@ const init = async () => {
         try {
             const han = await import(`${root}/${handler}`);
             await han.default();
-            // console.log(`Handler ${handler} loaded`);
+            // log.info(`Handler ${handler} loaded`);
         } catch (error) {
-            console.error(`Error loading handler ${handler}: ${error}`);
+            log.error(`handler - Error loading handler ${handler}: ${error}`);
         }
     }
 
-    console.log(`${handlers.length} handlers loaded`);
+    log.info(`handler - ${handlers.length} handlers loaded`);
 }
 
 export {

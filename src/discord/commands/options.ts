@@ -1,4 +1,5 @@
 import { ChatInputCommandInteraction } from "discord.js"
+import log from "@/utilities/log"
 
 /**
  * @brief This is a complete example of a slash command with many different options
@@ -75,7 +76,7 @@ export default {
         const number = interaction.options.getNumber('number') || 'No number provided';
         const attachment = interaction.options.getAttachment('attachment') || 'No attachment provided';
 
-        console.log(
+        log.info(
             'string:', string, 
             '\ninteger:', integer, 
             '\nboolean:', boolean, 

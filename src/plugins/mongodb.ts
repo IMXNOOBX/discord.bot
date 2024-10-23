@@ -24,8 +24,7 @@ export default {
         const db_url = `mongodb://${process.env.MONGO_HOST}:${process.env.MONGO_PORT}`;
         const db_name = process.env.MONGO_DB;
 
-        log.info(`[MongoDB] | Connecting to ${db_url}/${db_name} ...`);
-
+        log.debug(`mongodb - Connecting to ${db_url}/${db_name} ...`);
 
 		mongoose.connect(`${db_url}/${db_name}`, { });
 		const db = mongoose.connection;
@@ -35,11 +34,11 @@ export default {
         });
 
         db.once('open', async () => {
-            log.info(`[MongoDB] | Connected to ${db_url}/${db_name}`);
+            log.info(`mongodb - Connected to ${db_url}/${db_name}`);
 
             const collections = await mongoose.connection.db?.listCollections().toArray();
 
-            log.info(`[MongoDB] | Found ${collections?.length} collections defined.`)
+            log.info(`mongodb - Found ${collections?.length} collections defined.`)
         });
         
         // You should return the database connection and the models you want to use

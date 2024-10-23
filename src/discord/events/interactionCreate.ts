@@ -6,11 +6,8 @@ export const event = 'interactionCreate';
 
 export const run = async (interaction: Interaction) => {
     if (interaction.isCommand()) { // First check if the interaction is a type command
-        if (
-            process.env.BOT_SERVERONLY == '1' &&
-            interaction.guildId == null
-        ) 
-            return;
+        // if (!interaction.guildId) // Check if the interaction is in a guild
+        //     return;
 
         const command = discord.commands.get(interaction.commandName);
 
@@ -22,7 +19,7 @@ export const run = async (interaction: Interaction) => {
          */
         await interaction
             .deferReply({ ephemeral: command.ephemeral || false })
-            .catch(() => { }); // Catch any error
+            .catch(() => { });
 
         const args = [];
 
@@ -38,7 +35,7 @@ export const run = async (interaction: Interaction) => {
         command
             .run(interaction, args)
             .catch((e: any) => {
-                log.error(e);
+                log.error(`Command (${command.name}) ${e}`);
 
                 interaction
                     .followUp({ content: `Error: ${e}`, ephemeral: true })
@@ -50,11 +47,12 @@ export const run = async (interaction: Interaction) => {
         const command = discord.commands.get(interaction.commandName);
 
         if (!command) return;
+        if (!command.autocomplete) return;
 
         command
             .autocomplete(interaction)
             .catch((e: any) => {
-                log.error(e);
+                log.error(`Auto-Complete (${command.name}) ${e}`);
             });
     }
 }

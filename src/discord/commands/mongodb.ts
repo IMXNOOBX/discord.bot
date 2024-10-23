@@ -21,12 +21,10 @@ export default {
     run: async (interaction: ChatInputCommandInteraction) => {
         const mongodb = discord.plugins.get('mongodb')
 
-        if (
-            !mongodb
-        ) 
-        return interaction.followUp({ content: `> 🤯 MongoDB plugin not loaded` });
+        if (!mongodb) 
+            return interaction.followUp({ content: `> 🤯 MongoDB plugin not loaded` });
 
-        const { models } = await mongodb;
+        const { models } = mongodb.data; // This is the object you returned from the init function
 
         const show = interaction.options.getBoolean('show')
         const user = interaction.options.getString('user')

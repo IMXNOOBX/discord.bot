@@ -21,8 +21,6 @@ export default async () =>{
     ) 
         return log.info('plugins - No plugins found, skipping...');
 
-    // const plugins = new Map();
-
     for (const file of files) {
         let plugin;
 
@@ -62,12 +60,17 @@ export default async () =>{
     log.info('plugins - Loaded successfully, initializing...');
 
     for (let plugin of discord.plugins.values())
-        if (plugin.init && typeof plugin.init === 'function')
-            plugin
-                .init()
-                .catch((e: any) => 
-                    log.error(`plugins - Error while initializing ${plugin.name}: ${e}`)
-            );
+        if (plugin.init && typeof plugin.init === 'function') {
+            const response = await plugin
+                                        .init()
+                                        .catch((e: any) => 
+                                            log.error(`plugins - Error while initializing ${plugin.name}: ${e}`)
+                                    );
+
+            plugin.data = response;
+
+            discord.plugins.set(plugin.name, plugin);
+        }
 
     log.info(`plugins - Loaded ${discord.plugins.size}/${files.length} plugins`);
 }

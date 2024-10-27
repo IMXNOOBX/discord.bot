@@ -1,5 +1,5 @@
 import { ChatInputCommandInteraction } from "discord.js"
-import discord from "@/discord"
+import discord from "../../discord"
 
 export default {
     name: 'mongodb',

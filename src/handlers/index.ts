@@ -1,5 +1,5 @@
 import fs from 'fs';
-import log from "@/utilities/log";
+import log from "../utilities/log";
 
 const init = async () => {
     const root = __dirname;

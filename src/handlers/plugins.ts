@@ -1,6 +1,6 @@
 import fs from 'fs';
-import log from '@/utilities/log';
-import discord from '@/discord';
+import log from '../utilities/log';
+import discord from '../discord';
 
 export default async () =>{
     log.info('plugins - Loading plugins...');

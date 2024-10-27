@@ -42,13 +42,9 @@
     "dotenv": "^16.4.5",
     "eslint": "^9.13.0",
     "globals": "^15.11.0",
-    "module-alias": "^2.2.3",
     "mongoose": "^8.7.2",
     "nodemon": "^3.1.7",
     "ts-node": "^10.9.2",
     "typescript": "^5.6.3"
-  },
-  "_moduleAliases": {
-    "@": ".build"
   }
 }

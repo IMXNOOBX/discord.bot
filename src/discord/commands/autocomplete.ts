@@ -1,4 +1,4 @@
-import { ChatInputCommandInteraction, AutocompleteInteraction } from "discord.js"
+import { ChatInputCommandInteraction, AutocompleteInteraction, ApplicationCommandOptionType } from "discord.js"
 import log from "../../utilities/log"
 /**
  * @brief This is a complete example of a slash command with many different options
@@ -12,13 +12,13 @@ export default {
         {
             name: "amazing",
             description: "Discord.js is amazing isn't it?",
-            type: 5, // boolean
+            type: ApplicationCommandOptionType.Boolean, // boolean
             required: true
         },
         {
 			name: "wow",
 			description: "I can show you different options dynamically in an option using auto complete",
-			type: 3, // String,
+			type: ApplicationCommandOptionType.String, // String,
 			autocomplete: true,
 			required: true
 		}

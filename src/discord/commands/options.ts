@@ -1,4 +1,4 @@
-import { ChatInputCommandInteraction } from "discord.js"
+import { ChatInputCommandInteraction, ApplicationCommandOptionType } from "discord.js"
 import log from "../../utilities/log"
 
 /**
@@ -13,55 +13,55 @@ export default {
         {
 			name: "string",
 			description: "String command option",
-			type: 3, // String
+			type: ApplicationCommandOptionType.String, // String
 			required: false
 		},
         {
             name: "integer",
             description: "Number command option",
-            type: 4, // Integer
+            type: ApplicationCommandOptionType.Integer, // Integer
             required: false
         },
         {
             name: "boolean",
             description: "Yes/No command option",
-            type: 5, // boolean
+            type: ApplicationCommandOptionType.Boolean, // boolean
             required: false
         },
         {
             name: "user",
             description: "User command option",
-            type: 6, // User
+            type: ApplicationCommandOptionType.User, // User
             required: false
         },
         {
             name: "channel",
             description: "Channel command option",
-            type: 7, // Channel
+            type: ApplicationCommandOptionType.Channel, // Channel
             required: false
         },
         {
             name: "role",
             description: "Role command option",
-            type: 8, // Role
+            type: ApplicationCommandOptionType.Role, // Role
             required: false
         },
         {
             name: "mentionable",
             description: "Mentionable command option",
-            type: 9, // Mentionable
+            type: ApplicationCommandOptionType.Mentionable, // Mentionable
             required: false
         },
         {
             name: "number",
             description: "Number command option",
-            type: 10, // Number
+            type: ApplicationCommandOptionType.Number, // Number
             required: false
         },
         {
             name: "attachment",
             description: "Attachment command option",
-            type: 11, // Attachment
+            type: ApplicationCommandOptionType.Attachment, // Attachment
             required: false
         },
     ],

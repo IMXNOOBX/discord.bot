@@ -1,4 +1,4 @@
-import { ChatInputCommandInteraction } from "discord.js"
+import { ChatInputCommandInteraction, ApplicationCommandOptionType } from "discord.js"
 import discord from "../../discord"
 
 export default {
@@ -8,13 +8,13 @@ export default {
         {
             name: "show",
             description: "Do you want to dump the database to the chat?",
-            type: 5, // boolean
+            type: ApplicationCommandOptionType.Boolean, // boolean
             required: false
         },
         {
 			name: "user",
 			description: "Add new user to the database, to add the email separate with a comma",
-			type: 3, // String
+			type: ApplicationCommandOptionType.String, // String
 			required: false
 		},
     ],

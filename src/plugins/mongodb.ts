@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import log from "@/utilities/log";
+import log from "../utilities/log";
 
 import schemas from './schemas';
 

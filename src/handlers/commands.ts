@@ -1,8 +1,8 @@
 import fs from 'fs';
 import { REST } from '@discordjs/rest';
 import { Routes } from 'discord-api-types/v9';
-import discord from '@/discord';
-import log from "@/utilities/log"
+import discord from '../discord';
+import log from "../utilities/log"
 
 export default async () => {
     const root = __dirname + '/../discord/commands';

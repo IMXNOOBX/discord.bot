@@ -55,4 +55,29 @@ export const run = async (interaction: Interaction) => {
                 log.error(`Auto-Complete (${command.name}) ${e}`);
             });
     }
+
+    if (interaction.isButton()) {
+        const commandName = interaction.message.interaction?.commandName;
+        if (!commandName) return;
+
+        const command = discord.commands.get(commandName);
+        
+        if (!command) return;
+        if (!command.button) return;
+
+        await interaction
+            .deferReply({ ephemeral: command.ephemeral || false })
+                .catch(() => { }); // Catch any error
+            
+        command
+            .button(interaction)
+            .catch((e: any) => {
+                log.error(e)
+                interaction
+                    .reply({ content: `Error: ${e}`, ephemeral: true })
+                    .catch(e => 
+                        log.error("Button interaction exception: " + e)
+                    );
+            });
+    }
 }

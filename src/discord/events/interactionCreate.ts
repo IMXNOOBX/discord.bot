@@ -37,8 +37,15 @@ export const run = async (interaction: Interaction) => {
             .catch((e: any) => {
                 log.error(`Command (${command.name}) ${e}`);
 
+                const dev = process.env.NODE_ENV === 'development';
+
                 interaction
-                    .followUp({ content: `Error: ${e}`, ephemeral: true })
+                    .followUp({ 
+                        content: dev ? 
+                            `(**Developer Mode**) An exception occurred while executing this(\`${command.name}\`) command:\n\`\`\`js\n${e}\`\`\`` :
+                            'Something went wrong while executing this command, please try again later.', 
+                        ephemeral: true 
+                    })
                     .catch(e => e);
             });
     }
@@ -72,12 +79,18 @@ export const run = async (interaction: Interaction) => {
         command
             .button(interaction)
             .catch((e: any) => {
-                log.error(e)
+                log.error(`Button (${command.name}) ${e}`);
+
+                const dev = process.env.NODE_ENV === 'development';
+
                 interaction
-                    .reply({ content: `Error: ${e}`, ephemeral: true })
-                    .catch(e => 
-                        log.error("Button interaction exception: " + e)
-                    );
+                    .reply({ 
+                        content: dev ? 
+                            `(**Developer Mode**) An exception occurred while executing this(\`${command.name}\`) button:\n\`\`\`js\n${e}\`\`\`` :
+                            'Something went wrong while executing this button, please try again later.', 
+                        ephemeral: true 
+                    })
+                    .catch(e => e);
             });
     }
 }

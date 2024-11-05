@@ -17,9 +17,10 @@ export const run = async (interaction: Interaction) => {
          * @brief Defer the reply to avoid the 3 seconds timeout
          * @note if ephemeral is true only the executor user will be able to see the response
          */
-        await interaction
-            .deferReply({ ephemeral: command.ephemeral || false })
-            .catch(() => { });
+        if (command?.deferred != false)
+            await interaction
+                .deferReply({ ephemeral: command.ephemeral || false })
+                .catch(() => { });
 
         const args = [];
 
@@ -100,19 +101,20 @@ export const run = async (interaction: Interaction) => {
             });
     }
 
-    if (interaction.isAutocomplete()) {
-        const command = discord.commands.get(interaction.commandName);
+    if (interaction.isModalSubmit()) {
+        const commandName = interaction.message?.interaction?.commandName;
+        if (!commandName) return;
 
-        if (!command) return;
+        const command = discord.commands.get(commandName);
         if (!command.autocomplete) {
-            log.error(`Auto-Complete (${command.name}) is not implemented`);
+            log.error(`Modal-Submit (${command.name}) is not implemented`);
             return;
         }
 
         command
             .autocomplete(interaction)
             .catch((e: any) => {
-                log.error(`Auto-Complete (${command.name}) ${e}`);
+                log.error(`Modal-Submit (${command.name}) ${e}`);
             });
     }
 }

@@ -54,7 +54,10 @@ export const run = async (interaction: Interaction) => {
         const command = discord.commands.get(interaction.commandName);
 
         if (!command) return;
-        if (!command.autocomplete) return;
+        if (!command.autocomplete) {
+            log.error(`Auto-Complete (${command.name}) is not implemented`);
+            return;
+        }
 
         command
             .autocomplete(interaction)
@@ -64,13 +67,16 @@ export const run = async (interaction: Interaction) => {
     }
 
     if (interaction.isButton()) {
-        const commandName = interaction.message.interaction?.commandName;
+        const commandName = interaction.message.interaction?.commandName
         if (!commandName) return;
 
         const command = discord.commands.get(commandName);
         
         if (!command) return;
-        if (!command.button) return;
+        if (!command.button) {
+            log.error(`Button (${command.name}) is not implemented`);
+            return;
+        }
 
         await interaction
             .deferReply({ ephemeral: command.ephemeral || false })
@@ -91,6 +97,22 @@ export const run = async (interaction: Interaction) => {
                         ephemeral: true 
                     })
                     .catch(e => e);
+            });
+    }
+
+    if (interaction.isAutocomplete()) {
+        const command = discord.commands.get(interaction.commandName);
+
+        if (!command) return;
+        if (!command.autocomplete) {
+            log.error(`Auto-Complete (${command.name}) is not implemented`);
+            return;
+        }
+
+        command
+            .autocomplete(interaction)
+            .catch((e: any) => {
+                log.error(`Auto-Complete (${command.name}) ${e}`);
             });
     }
 }

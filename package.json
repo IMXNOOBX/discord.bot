@@ -5,15 +5,15 @@
   "main": ".build/index.js",
   "scripts": {
     "test": "eslint .",
-    "first": "cross-env NODE_ENV=development npm i && node .build/index.js",
-    "npmupdate": "npx npm-check-updates -u && npm i",
     "start": "cross-env NODE_ENV=production tsc && node .build/index.js",
-    "dev": "cross-env NODE_ENV=development nodemon --exec ts-node ./src/index.ts --delay 2.5",
     "build": "cross-env NODE_ENV=production tsc",
-    "pm2-start": "pm2 start \"npm run start\" --name discord-bot",
-    "pm2-restart": "npm run build && pm2 restart discord-bot --update-env",
-    "pm2-rs": "pm2 restart discord-bot --update-env",
-    "pm2-stop": "pm2 delete discord-bot"
+    "dev": "cross-env NODE_ENV=development nodemon --exec ts-node ./src/index.ts --delay 2.5",
+    "setup": "cross-env NODE_ENV=development npm i && node .build/index.js",
+    "update": "npx npm-check-updates -u && npm i",
+    "pm2:start": "pm2 start \"npm run start\" --name discord-bot",
+    "pm2:restart": "npm run build && pm2 restart discord-bot --update-env",
+    "pm2:rs": "pm2 restart discord-bot --update-env",
+    "pm2:stop": "pm2 delete discord-bot"
   },
   "repository": {
     "type": "git",

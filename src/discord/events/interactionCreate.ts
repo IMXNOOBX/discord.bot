@@ -17,9 +17,10 @@ export const run = async (interaction: Interaction) => {
          * @brief Defer the reply to avoid the 3 seconds timeout
          * @note if ephemeral is true only the executor user will be able to see the response
          */
-        await interaction
-            .deferReply({ ephemeral: command.ephemeral || false })
-            .catch(() => { });
+        if (command.deferred !== false)
+            await interaction
+                .deferReply({ ephemeral: command.ephemeral || false })
+                .catch(() => { });
 
         const args = [];
 
@@ -78,9 +79,10 @@ export const run = async (interaction: Interaction) => {
             return;
         }
 
-        await interaction
-            .deferReply({ ephemeral: command.ephemeral || false })
-                .catch(() => { }); // Catch any error
+        if (command.deferred !== false)
+            await interaction
+                .deferReply({ ephemeral: command.ephemeral || false })
+                    .catch(() => { }); // Catch any error
             
         command
             .button(interaction)

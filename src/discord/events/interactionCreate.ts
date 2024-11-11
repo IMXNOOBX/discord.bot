@@ -79,9 +79,10 @@ export const run = async (interaction: Interaction) => {
             return;
         }
 
-        await interaction
-            .deferReply({ ephemeral: command.ephemeral || false })
-                .catch(() => { }); // Catch any error
+        if (command?.deferred !== false)
+            await interaction
+                .deferReply({ ephemeral: command.ephemeral || false })
+                    .catch(() => { }); // Catch any error
             
         command
             .button(interaction)

@@ -106,13 +106,13 @@ export const run = async (interaction: Interaction) => {
         if (!commandName) return;
 
         const command = discord.commands.get(commandName);
-        if (!command.autocomplete) {
+        if (!command.modal) {
             log.error(`Modal-Submit (${command.name}) is not implemented`);
             return;
         }
 
         command
-            .autocomplete(interaction)
+            .modal(interaction)
             .catch((e: any) => {
                 log.error(`Modal-Submit (${command.name}) ${e}`);
             });

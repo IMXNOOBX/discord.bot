@@ -118,4 +118,22 @@ export const run = async (interaction: Interaction) => {
                 log.error(`Modal-Submit (${command.name}) ${e}`);
             });
     }
+
+    if (interaction.isAnySelectMenu()) {
+        const commandName = interaction.message?.interaction?.commandName;
+        if (!commandName) return;
+
+        const command = discord.commands.get(commandName);
+        if (!command.select) {
+            log.error(`Select-Menu (${command.name}) is not implemented`);
+            return;
+        }
+
+        command
+            .select(interaction)
+            .catch((e: any) => {
+                log.error(`Select-Menu (${command.name}) ${e}`);
+                console.error(e);
+            });
+    }
 }

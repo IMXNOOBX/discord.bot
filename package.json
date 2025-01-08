@@ -1,7 +1,7 @@
 {
   "name": "discord-bot",
   "description": "discord.js v14 bot template/base code to help you get started with your application.",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "main": ".build/index.js",
   "scripts": {
     "test": "eslint .",

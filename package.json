@@ -6,7 +6,7 @@
   "scripts": {
     "test": "eslint .",
     "update": "npx npm-check-updates -u && npm i",
-    "setup": "npm i && (copy .env.example .env.local || cp .env.example .env.local) && (copy .env.example .env.development.local || cp .env.example .env.development.local)", 
+    "setup": "npm i && (copy .env.example .env.local || cp .env.example .env.local) && (copy .env.example .env.development.local || cp .env.example .env.development.local)",
     "start": "cross-env NODE_ENV=production tsc && node .build/index.js",
     "start:dev": "tsc && cross-env NODE_ENV=development node .build/index.js",
     "build": "cross-env NODE_ENV=production tsc",
@@ -14,7 +14,8 @@
     "pm2:start": "pm2 start \"npm run start\" --name discord-bot",
     "pm2:restart": "npm run build && pm2 restart discord-bot --update-env",
     "pm2:rs": "pm2 restart discord-bot --update-env",
-    "pm2:stop": "pm2 delete discord-bot"
+    "pm2:stop": "pm2 delete discord-bot",
+    "b": "bumpp"
   },
   "repository": {
     "type": "git",
@@ -39,6 +40,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
+    "bumpp": "^9.9.3",
     "cross-env": "^7.0.3",
     "dotenv": "^16.4.7",
     "eslint": "^9.17.0",

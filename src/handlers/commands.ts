@@ -17,6 +17,9 @@ export default async () => {
 
         cmd = cmd.default || cmd;
 
+        if (cmd.disabled)
+            continue;
+
         if (
             !cmd.name ||
             !cmd.run || typeof cmd.run !== 'function'

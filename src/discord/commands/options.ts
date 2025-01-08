@@ -65,6 +65,7 @@ export default {
             required: false
         },
     ],
+    disabled: process.env.NODE_ENV !== 'development',
     run: async (interaction: ChatInputCommandInteraction) => {
         const string = interaction.options.getString('string') || 'No string provided';
         const integer = interaction.options.getInteger('integer') || 'No integer provided';

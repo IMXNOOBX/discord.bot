@@ -1,5 +1,4 @@
 import 'dotenv/config';
-import 'module-alias/register';
 
 // 🎯
 import discord from './discord';

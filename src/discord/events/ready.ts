@@ -10,7 +10,7 @@ export const run = async () => {
   if (!client.user) return log.warn('bot - Cosmic radiation flipped a byte and now the user is missing!');
 
   log.info(
-    `bot - ${client.user.tag} (Server Only: ${process.env.BOT_SERVERONLY ? 'Yes' : 'No'}) guilds: {${client.guilds.cache.size}}, users: {${client.users.cache.size}}`
+    `bot - ${client.user.tag} guilds: {${client.guilds.cache.size}}, users: {${client.users.cache.size}}`
   );
 
   client.user.setStatus("dnd"); // online, idle, dnd, invisible

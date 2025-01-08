@@ -23,6 +23,7 @@ export default {
 			required: true
 		}
     ],
+    disabled: process.env.NODE_ENV !== 'development',
     autocomplete: async (interaction: AutocompleteInteraction) => {
         const option = interaction.options.getFocused(true);
 

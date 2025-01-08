@@ -18,6 +18,7 @@ export default {
 			required: false
 		},
     ],
+    disabled: process.env.NODE_ENV !== 'development',
     run: async (interaction: ChatInputCommandInteraction) => {
         const mongodb = discord.plugins.get('mongodb')
 

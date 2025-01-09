@@ -26,6 +26,8 @@ export default {
 
         log.debug(`mongodb - Connecting to ${db_url}/${db_name} ...`);
 
+        mongoose.pluralize(null);
+
 		mongoose.connect(`${db_url}/${db_name}`, { });
 		const db = mongoose.connection;
 

@@ -1,4 +1,4 @@
-import { Interaction, ApplicationCommandOptionType } from "discord.js";
+import { Interaction, ApplicationCommandOptionType, MessageFlags } from "discord.js";
 import discord from "../../discord";
 import log from "../../utilities/log";
 
@@ -19,7 +19,7 @@ export const run = async (interaction: Interaction) => {
          */
         if (command?.deferred != false)
             await interaction
-                .deferReply({ ephemeral: command.ephemeral || false })
+                .deferReply({ flags: command.ephemeral ? MessageFlags.Ephemeral : undefined })
                 .catch(() => { });
 
         const args = [];

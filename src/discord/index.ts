@@ -1,5 +1,5 @@
 import Discord, { Client, Collection } from 'discord.js';
-import log from "../utilities/log";
+import log from "@utils/log";
 
 const commands = new Collection<string, any>();
 const aliases = new Collection<string, string>();

@@ -1,6 +1,6 @@
 import fs from 'fs';
-import discord from '../discord';
-import log from "../utilities/log";
+import discord from '@/discord';
+import log from "@utils/log";
 
 export default async () => {
     const root = __dirname + '/../discord/events';

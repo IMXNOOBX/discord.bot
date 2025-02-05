@@ -1,5 +1,9 @@
-import { ChatInputCommandInteraction, AutocompleteInteraction, ApplicationCommandOptionType } from "discord.js"
-import log from "../../utilities/log"
+import { 
+    ChatInputCommandInteraction, 
+    AutocompleteInteraction, 
+    ApplicationCommandOptionType 
+} from "discord.js"
+import log from "@utils/log";
 /**
  * @brief This is a complete example of a slash command with many different options
  * @see https://discord.com/developers/docs/interactions/application-commands#application-command-object-application-command-types

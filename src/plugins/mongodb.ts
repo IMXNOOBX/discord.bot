@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import log from "../utilities/log";
+import log from "@utils/log";
 
 import schemas from './schemas';
 
@@ -44,6 +44,6 @@ export default {
         });
         
         // You should return the database connection and the models you want to use
-        return { db, models: schemas };
+        return { db, ...schemas };
     },
 }

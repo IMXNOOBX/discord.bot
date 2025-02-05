@@ -1,5 +1,8 @@
-import { ChatInputCommandInteraction, ApplicationCommandOptionType } from "discord.js"
-import log from "../../utilities/log"
+import { 
+    ChatInputCommandInteraction, 
+    ApplicationCommandOptionType 
+} from "discord.js"
+import log from "@utils/log";
 
 /**
  * @brief This is a complete example of a slash command with many different options

@@ -1,5 +1,5 @@
 import { Guild } from "discord.js";
-import log from "../../utilities/log"
+import log from "@utils/log";
 
 export const event = 'guildCreate';
 

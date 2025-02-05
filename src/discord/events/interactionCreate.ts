@@ -1,6 +1,6 @@
 import { Interaction, ApplicationCommandOptionType, MessageFlags } from "discord.js";
-import discord from "../../discord";
-import log from "../../utilities/log";
+import discord from "@/discord";
+import log from "@utils/log";
 
 export const event = 'interactionCreate';
 

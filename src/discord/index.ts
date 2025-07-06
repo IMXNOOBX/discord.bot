@@ -6,6 +6,7 @@ const aliases = new Collection<string, string>();
 const plugins = new Collection<string, any>();
 
 const client: Client = new Discord.Client({
+    shards: 'auto',
     intents: [
         Discord.GatewayIntentBits.Guilds,
         Discord.GatewayIntentBits.GuildMessages,

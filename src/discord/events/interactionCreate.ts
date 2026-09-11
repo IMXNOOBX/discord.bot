@@ -5,7 +5,7 @@ import log from "@utils/log";
 export const event = 'interactionCreate';
 
 export const run = async (interaction: Interaction) => {
-    if (interaction.isCommand()) { // First check if the interaction is a type command
+    if (interaction.isChatInputCommand()) { // First check if the interaction is a slash command
         // if (!interaction.guildId) // Check if the interaction is in a guild
         //     return;
 

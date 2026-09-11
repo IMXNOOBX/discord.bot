@@ -15,7 +15,7 @@
   
 </div>
 
-> This is my main discord bot template. Its a simple-to-use template for discord.js `^14.16.*` (other versions check [branches](https://github.com/IMXNOOBX/discord.bot/branches)). It has a lot of features and utilities to start coding your bot right away. It also has a simple command example (pingo).
+> This is my main discord bot template. It is a simple-to-use template for discord.js `^14.27.0` (other versions check [branches](https://github.com/IMXNOOBX/discord.bot/branches)). It has a lot of features and utilities to start coding your bot right away. It also has a simple command example (pingo). Node.js `24.11.0` or newer is required.
 
 ## 🧩 Implementations
 > Below are the public bots that use this template.

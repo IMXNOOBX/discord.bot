@@ -1,6 +1,5 @@
 import fs from 'fs';
-import { REST } from '@discordjs/rest';
-import { Routes } from 'discord-api-types/v9';
+import { REST, Routes } from 'discord.js';
 import discord from '@/discord';
 import log from "@utils/log"
 
@@ -45,9 +44,7 @@ export default async () => {
 
         discord.client
         .on('ready', async () => {
-            const rest = new REST({
-                version: '9'
-            }).setToken(process.env.BOT_TOKEN as string);
+            const rest = new REST().setToken(process.env.BOT_TOKEN as string);
 
             await rest.put(
                 Routes.applicationCommands(discord.client.user?.id as string), {
